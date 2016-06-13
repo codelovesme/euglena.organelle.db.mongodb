@@ -1,0 +1,14 @@
+{
+  "name": "euglena.organelle.db.mongodb",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/euglena.organelle.db.mongodb.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "codelovesme",
+  "license": "GPL v2",
+  "dependencies": {
+    "mongodb": "^2.1.16"
+  }
+}
