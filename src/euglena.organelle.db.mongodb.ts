@@ -1,10 +1,9 @@
 
 /// <reference path="../typings/mongodb/mongodb.d.ts" />
-
 "use strict";
 import * as mongodb from "mongodb";
-import {euglena_template} from "../node_modules/euglena/euglena_template/src/euglena_template";
-import {euglena} from "../node_modules/euglena/euglena/src/euglena";
+import {euglena_template} from "euglena.template";
+import {euglena} from "euglena";
 import Particle = euglena.being.Particle;
 import EuglenaInfo = euglena_template.being.alive.particles.EuglenaInfo;
 
@@ -80,7 +79,7 @@ export class Organelle extends euglena_template.being.alive.organelles.DbOrganel
     }
     
     private generateQuery(particle:Particle) : any {
-        let query = {name:particle.content.name, of: particle.content.of};
+        let query:any = {name:particle.content.name, of: particle.content.of};
         if(particle.content.primaryKeys) {
             for(let k of particle.content.primaryKeys) {
                 query["content."+k] = particle.content.content[k]; 

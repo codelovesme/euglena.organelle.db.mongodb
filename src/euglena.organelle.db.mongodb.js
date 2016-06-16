@@ -1,8 +1,8 @@
 /// <reference path="../typings/mongodb/mongodb.d.ts" />
 "use strict";
-var mongodb = require("mongodb");
-var euglena_template_1 = require("../node_modules/euglena/euglena_template/src/euglena_template");
-var euglena_1 = require("../node_modules/euglena/euglena/src/euglena");
+const mongodb = require("mongodb");
+const euglena_template_1 = require("euglena.template");
+const euglena_1 = require("euglena");
 var EuglenaInfo = euglena_template_1.euglena_template.being.alive.particles.EuglenaInfo;
 const OrganelleName = "DbOrganelleImplMongoDb";
 class Organelle extends euglena_template_1.euglena_template.being.alive.organelles.DbOrganelle {
