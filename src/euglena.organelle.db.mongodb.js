@@ -12,7 +12,7 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
         this.euglenaInfos.add("idcore", new EuglenaInfo("idcore", "localhost", "1337"));
         this.euglenaInfos.add("postman", new EuglenaInfo("idcore", "localhost", "1337"));
     }
-    receive(particle, response) {
+    receive(particle) {
         switch (particle.name) {
             case euglena_template_1.euglena_template.being.ghost.organelle.db.constants.StartDatabase:
                 let this3_ = this;
@@ -20,7 +20,7 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
                 mongodb.MongoClient.connect("mongodb://" + this.initialProperties.url + ":" + this.initialProperties.port + "/" + this.initialProperties.databaseName, (err, db) => {
                     if (!err) {
                         this.db = db;
-                        response(new euglena_template_1.euglena_template.being.ghost.organelle.db.outgoingparticles.DbIsOnline(particle.of));
+                        this3_.send(new euglena_template_1.euglena_template.being.ghost.organelle.db.outgoingparticles.DbIsOnline(particle.of));
                     }
                     else {
                     }
@@ -30,7 +30,7 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
                 let this_ = this;
                 let query = this.generateQuery(particle);
                 this.db.collection("particles").find(query).toArray((err, doc) => {
-                    response(doc && doc.length > 0 ? doc[0] : new euglena_template_1.euglena_template.being.alive.particles.Exception(new euglena_1.euglena.sys.type.Exception("There is no particle for given reference."), "mongodb"));
+                    this_.send(doc && doc.length > 0 ? doc[0] : new euglena_template_1.euglena_template.being.alive.particles.Exception(new euglena_1.euglena.sys.type.Exception("There is no particle for given reference."), "mongodb"));
                 });
                 break;
             case euglena_template_1.euglena_template.being.alive.constants.impacts.ReadParticles:
@@ -61,7 +61,6 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
                     if (err) {
                     }
                     else {
-                        response(new euglena_template_1.euglena_template.being.alive.particles.Acknowledge({ of: saveParticle.of, id: saveParticle.content.name }, euglena_template_1.euglena_template.being.alive.constants.organelles.Db));
                     }
                 });
                 break;

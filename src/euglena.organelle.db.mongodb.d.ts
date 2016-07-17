@@ -6,6 +6,6 @@ export declare class Organelle extends euglena_template.being.alive.organelles.D
     private euglenaInfos;
     private db;
     constructor();
-    receive(particle: Particle, response: euglena.being.interaction.Response): void;
+    receive(particle: Particle): void;
     private generateQuery(particle);
 }

@@ -18,7 +18,7 @@ export class Organelle extends euglena_template.being.alive.organelles.DbOrganel
         this.euglenaInfos.add("idcore", new EuglenaInfo("idcore", "localhost", "1337"));
         this.euglenaInfos.add("postman", new EuglenaInfo("idcore", "localhost", "1337"));
     }
-    public receive(particle: Particle,response:euglena.being.interaction.Response): void {
+    public receive(particle: Particle): void {
         switch (particle.name) {
             case euglena_template.being.ghost.organelle.db.constants.StartDatabase:
                 let this3_: Organelle = this;
@@ -26,7 +26,7 @@ export class Organelle extends euglena_template.being.alive.organelles.DbOrganel
                 mongodb.MongoClient.connect("mongodb://" + this.initialProperties.url + ":" + this.initialProperties.port + "/" + this.initialProperties.databaseName, (err, db) => {
                     if (!err) {
                         this.db = db;
-                        response(new euglena_template.being.ghost.organelle.db.outgoingparticles.DbIsOnline(particle.of));
+                        this3_.send(new euglena_template.being.ghost.organelle.db.outgoingparticles.DbIsOnline(particle.of));
                     } else {
                         //TODO
                     }
@@ -36,7 +36,7 @@ export class Organelle extends euglena_template.being.alive.organelles.DbOrganel
                 let this_ = this;
                 let query = this.generateQuery(particle);
                 this.db.collection("particles").find(query).toArray((err, doc) => {
-                    response(doc&&doc.length>0?doc[0]:new euglena_template.being.alive.particles.Exception(
+                    this_.send(doc&&doc.length>0?doc[0]:new euglena_template.being.alive.particles.Exception(
                         new euglena.sys.type.Exception("There is no particle for given reference."),"mongodb"
                     ));
                 });
@@ -71,7 +71,7 @@ export class Organelle extends euglena_template.being.alive.organelles.DbOrganel
                     if (err) {
                         //TODO
                     } else {
-                        response(new euglena_template.being.alive.particles.Acknowledge({ of: saveParticle.of, id: saveParticle.content.name }, euglena_template.being.alive.constants.organelles.Db));
+                       // this2_.send(new euglena_template.being.alive.particles.Acknowledge({ of: saveParticle.of, id: saveParticle.content.name }, euglena_template.being.alive.constants.organelles.Db));
                     }
                 });
                 break;
