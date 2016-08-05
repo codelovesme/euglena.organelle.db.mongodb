@@ -5,11 +5,11 @@ import * as mongodb from "mongodb";
 import {euglena_template} from "euglena.template";
 import {euglena} from "euglena";
 import Particle = euglena.being.Particle;
-import EuglenaInfo = euglena_template.being.alive.particles.EuglenaInfo;
+import EuglenaInfo = euglena_template.being.alive.particle.EuglenaInfo;
 
 const OrganelleName = "DbOrganelleImplMongoDb";
 
-export class Organelle extends euglena_template.being.alive.organelles.DbOrganelle {
+export class Organelle extends euglena_template.being.alive.organelle.DbOrganelle {
     private db: mongodb.Db;
     constructor() {
         super(OrganelleName);
@@ -17,7 +17,7 @@ export class Organelle extends euglena_template.being.alive.organelles.DbOrganel
         this.addAction(euglena_template.being.alive.constants.impacts.ReadParticle, (particle) => {
             let query = this_.generateQuery(particle);
             this_.db.collection("particles").find(query).toArray((err, doc) => {
-                this_.send(doc && doc.length > 0 ? doc[0] : new euglena_template.being.alive.particles.Exception(
+                this_.send(doc && doc.length > 0 ? doc[0] : new euglena_template.being.alive.particle.Exception(
                     new euglena.sys.type.Exception("There is no particle for given reference."), "mongodb"
                 ));
             });
@@ -50,10 +50,10 @@ export class Organelle extends euglena_template.being.alive.organelles.DbOrganel
     }
     protected onGettingAlive() {
         let this3_: Organelle = this;
-        mongodb.MongoClient.connect("mongodb://" + this.initialProperties.url + ":" + this.initialProperties.port + "/" + this.initialProperties.databaseName, (err, db) => {
+        mongodb.MongoClient.connect("mongodb://" + this.sap.url + ":" + this.sap.port + "/" + this.sap.databaseName, (err, db) => {
             if (!err) {
                 this.db = db;
-                this3_.send(new euglena_template.being.ghost.organelle.db.outgoingparticles.DbIsOnline("this"));
+                this3_.send(new euglena_template.being.alive.particle.DbIsOnline("this"));
             } else {
                 //TODO
             }
