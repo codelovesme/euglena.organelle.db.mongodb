@@ -12,6 +12,7 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
     }
     bindActions(addAction) {
         addAction(euglena_template_1.euglena_template.being.alive.constants.particles.DbOrganelleSap, (particle) => {
+            this_.sapContent = particle.content;
             this_.getAlive();
         });
         addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.ReadParticle, (particle) => {

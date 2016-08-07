@@ -18,6 +18,7 @@ export class Organelle extends euglena_template.being.alive.organelle.DbOrganell
     }
     protected bindActions(addAction: (particleName: string, action: (particle: Particle) => void) => void): void {
         addAction(euglena_template.being.alive.constants.particles.DbOrganelleSap,(particle)=>{
+            this_.sapContent = particle.content;
             this_.getAlive();
         });
         addAction(euglena_template.being.alive.constants.impacts.ReadParticle, (particle) => {
