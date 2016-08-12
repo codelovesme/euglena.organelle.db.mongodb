@@ -8,5 +8,4 @@ export declare class Organelle extends euglena_template.being.alive.organelle.Db
     constructor();
     protected bindActions(addAction: (particleName: string, action: (particle: Particle) => void) => void): void;
     private getAlive();
-    private generateQuery(particle);
 }
