@@ -16,23 +16,17 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
             this_.getAlive();
         });
         addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.ReadParticle, (particle) => {
-            this_.db.collection("particles").find({ meta: particle.meta }).toArray((err, doc) => {
+            this_.db.collection("particles").find({ meta: particle.data.meta }).toArray((err, doc) => {
                 this_.send(doc && doc.length > 0 ? doc[0] : new euglena_template_1.euglena_template.being.alive.particle.Exception(new euglena_1.euglena.sys.type.Exception("There is no particle for given reference."), "mongodb"));
             });
         });
-        addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.ReadParticles, (particle) => {
-            this_.db.collection("particles").find({ of: particle.data }).toArray((err, doc) => {
-                for (var index = 0; index < doc.length; index++) {
-                }
-            });
-        });
         addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.RemoveParticle, (particle) => {
-            this_.db.collection("particles").findOneAndDelete({ meta: particle.meta }, (err, doc) => {
+            this_.db.collection("particles").findOneAndDelete({ meta: particle.data.meta }, (err, doc) => {
                 //TODO
             });
         });
         addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.SaveParticle, (particle) => {
-            this.db.collection("particles").findOneAndUpdate({ meta: particle.meta }, particle.data, { upsert: true }, (err, document) => {
+            this.db.collection("particles").findOneAndUpdate({ meta: particle.data.meta }, particle.data, { upsert: true }, (err, document) => {
                 if (err) {
                 }
                 else {
