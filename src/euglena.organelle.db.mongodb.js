@@ -11,13 +11,19 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
         this_ = this;
     }
     bindActions(addAction) {
-        addAction(euglena_template_1.euglena_template.being.alive.constants.particles.DbOrganelleSap, (particle) => {
+        addAction(euglena_template_1.euglena_template.being.alive.constants.particles.DbOrganelleSap, (particle, callback) => {
             this_.sapContent = particle.data;
             this_.getAlive();
         });
-        addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.ReadParticle, (particle) => {
+        addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.ReadParticle, (particle, callback) => {
             this_.db.collection("particles").find({ meta: particle.data.meta }).toArray((err, doc) => {
-                this_.send(doc && doc.length > 0 ? doc[0] : new euglena_template_1.euglena_template.being.alive.particle.Exception(new euglena_1.euglena.sys.type.Exception("There is no particle for given reference."), "mongodb"));
+                let p = doc && doc.length > 0 ? doc[0] : new euglena_template_1.euglena_template.being.alive.particle.Exception(new euglena_1.euglena.sys.type.Exception("There is no particle for given reference."), "mongodb");
+                if (callback) {
+                    callback(p);
+                }
+                else {
+                    this_.send(p, this_.name);
+                }
             });
         });
         addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.RemoveParticle, (particle) => {
@@ -38,7 +44,7 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
         mongodb.MongoClient.connect("mongodb://" + this.sapContent.url + ":" + this.sapContent.port + "/" + this.sapContent.databaseName, (err, db) => {
             if (!err) {
                 this.db = db;
-                this_.send(new euglena_template_1.euglena_template.being.alive.particle.DbIsOnline("this"));
+                this_.send(new euglena_template_1.euglena_template.being.alive.particle.DbIsOnline("this"), this_.name);
             }
             else {
             }
