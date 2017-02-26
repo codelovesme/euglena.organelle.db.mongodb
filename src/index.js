@@ -26,6 +26,18 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
                 }
             });
         });
+        addAction(euglena_template_1.euglena_template.being.alive.constants.particles.ReadMatchedParticles, (particle, callback) => {
+            this_.db.collection("particles").find({ meta: particle.data.meta }).toArray((err, doc) => {
+                let p = doc && doc.length > 0 ?
+                    new euglena_template_1.euglena_template.being.alive.particle.MatchedParticles({ particleRef: particle, result: doc }, this.sapContent.euglenaName) : new euglena_template_1.euglena_template.being.alive.particle.Exception(new euglena_1.euglena.sys.type.Exception("There is no particle for given reference."), "mongodb");
+                if (callback) {
+                    callback(p);
+                }
+                else {
+                    this_.send(p, this_.name);
+                }
+            });
+        });
         addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.RemoveParticle, (particle) => {
             this_.db.collection("particles").findOneAndDelete({ meta: particle.data.meta }, (err, doc) => {
                 //TODO
