@@ -33,7 +33,7 @@ export class Organelle extends euglena_template.being.alive.organelle.DbOrganell
             });
         });
         addAction(euglena_template.being.alive.constants.particles.ReadMatchedParticles, (particle, callback) => {
-            this_.db.collection("particles").find({ meta: particle.data.meta }).toArray((err, doc) => {
+            this_.db.collection("particles").find(euglena.js.Class.toDotNotation(particle.data)).toArray((err, doc) => {
                 let p = doc && doc.length > 0 ?
                     new euglena_template.being.alive.particle.MatchedParticles({ particleRef: particle, result: doc }, this.sapContent.euglenaName) : new euglena_template.being.alive.particle.Exception(
                         new euglena.sys.type.Exception("There is no particle for given reference."), "mongodb");
