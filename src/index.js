@@ -29,7 +29,7 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
         addAction(euglena_template_1.euglena_template.being.alive.constants.particles.ReadMatchedParticles, (particle, callback) => {
             this_.db.collection("particles").find(euglena_1.euglena.js.Class.toDotNotation(particle.data)).toArray((err, doc) => {
                 let p = doc && doc.length > 0 ?
-                    new euglena_template_1.euglena_template.being.alive.particle.MatchedParticles({ particleRef: particle, result: doc }, this.sapContent.euglenaName) : new euglena_template_1.euglena_template.being.alive.particle.Exception(new euglena_1.euglena.sys.type.Exception("There is no particle for given reference."), "mongodb");
+                    new euglena_template_1.euglena_template.being.alive.particle.MatchedParticles({ particleRef: particle.data, result: doc }, this.sapContent.euglenaName) : new euglena_template_1.euglena_template.being.alive.particle.Exception(new euglena_1.euglena.sys.type.Exception("There is no particle for given reference."), "mongodb");
                 if (callback) {
                     callback(p);
                 }
