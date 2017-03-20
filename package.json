@@ -10,7 +10,7 @@
   "license": "GPL v2",
   "dependencies": {
     "mongodb": "^2.1.16",
-    "euglena":"https://github.com/codelovesme/euglena.git#develop",
-    "euglena.template": "https://github.com/codelovesme/euglena.template.git"
+    "euglena":"0.0.7",
+    "euglena.template": "0.0.4"
   }
 }

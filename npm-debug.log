@@ -1,0 +1,145 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/codelovesme/.nvm/versions/node/v7.4.0/bin/node',
+1 verbose cli   '/home/codelovesme/.nvm/versions/node/v7.4.0/bin/npm',
+1 verbose cli   'unpublish',
+1 verbose cli   '--force' ]
+2 info using npm@4.0.5
+3 info using node@v7.4.0
+4 warn using --force I sure hope you know what you are doing.
+5 silly unpublish args[0] undefined
+6 silly unpublish thing {}
+7 verbose unpublish { name: 'euglena.organelle.db.mongodb',
+7 verbose unpublish   version: '0.0.1',
+7 verbose unpublish   description: '',
+7 verbose unpublish   main: 'src/index.js',
+7 verbose unpublish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+7 verbose unpublish   author: { name: 'codelovesme' },
+7 verbose unpublish   license: 'GPL v2',
+7 verbose unpublish   dependencies:
+7 verbose unpublish    { mongodb: '^2.1.16',
+7 verbose unpublish      euglena: '0.0.7',
+7 verbose unpublish      'euglena.template': '0.0.4' },
+7 verbose unpublish   gitHead: '9ad8660140d9a5de12ee8ffb2b59aad4b9bfef63',
+7 verbose unpublish   readme: 'ERROR: No README data found!',
+7 verbose unpublish   _id: 'euglena.organelle.db.mongodb@0.0.1' }
+8 verbose getPublishConfig undefined
+9 silly ls normalized euglena.organelle.db.mongodb/0.0.1
+10 silly gentlyRm /home/codelovesme/.npm/euglena.organelle.db.mongodb/0.0.1 is being purged
+11 verbose gentlyRm don't care about contents; nuking /home/codelovesme/.npm/euglena.organelle.db.mongodb/0.0.1
+12 silly vacuum-fs purging /home/codelovesme/.npm/euglena.organelle.db.mongodb/0.0.1
+13 silly vacuum-fs removing /home/codelovesme/.npm/euglena.organelle.db.mongodb
+14 silly vacuum-fs quitting because other entries in /home/codelovesme/.npm
+15 silly mapToRegistry name euglena.organelle.db.mongodb
+16 silly mapToRegistry using default registry
+17 silly mapToRegistry registry https://registry.npmjs.org/
+18 silly mapToRegistry data Result {
+18 silly mapToRegistry   raw: 'euglena.organelle.db.mongodb',
+18 silly mapToRegistry   scope: null,
+18 silly mapToRegistry   escapedName: 'euglena.organelle.db.mongodb',
+18 silly mapToRegistry   name: 'euglena.organelle.db.mongodb',
+18 silly mapToRegistry   rawSpec: '',
+18 silly mapToRegistry   spec: 'latest',
+18 silly mapToRegistry   type: 'tag' }
+19 silly mapToRegistry uri https://registry.npmjs.org/euglena.organelle.db.mongodb
+20 verbose get GET as part of write; not caching result
+21 verbose request uri https://registry.npmjs.org/euglena.organelle.db.mongodb?write=true
+22 verbose request no auth needed
+23 info attempt registry request try #1 at 5:42:04 PM
+24 verbose request using bearer token for auth
+25 verbose request id cba3ea01d40d9e1d
+26 http request GET https://registry.npmjs.org/euglena.organelle.db.mongodb?write=true
+27 http 200 https://registry.npmjs.org/euglena.organelle.db.mongodb?write=true
+28 verbose headers { server: 'CouchDB/1.6.1 (Erlang OTP/R16B03)',
+28 verbose headers   'content-type': 'application/json',
+28 verbose headers   etag: '"58cfe989-624"',
+28 verbose headers   'content-encoding': 'gzip',
+28 verbose headers   'cache-control': 'max-age=0',
+28 verbose headers   'transfer-encoding': 'chunked',
+28 verbose headers   'accept-ranges': 'bytes',
+28 verbose headers   date: 'Mon, 20 Mar 2017 14:42:13 GMT',
+28 verbose headers   via: '1.1 varnish',
+28 verbose headers   connection: 'keep-alive',
+28 verbose headers   'x-served-by': 'cache-hhn1537-HHN',
+28 verbose headers   'x-cache': 'MISS',
+28 verbose headers   'x-cache-hits': '0',
+28 verbose headers   'x-timer': 'S1490020932.924278,VS0,VE429',
+28 verbose headers   vary: 'Accept-Encoding' }
+29 silly get cb [ 200,
+29 silly get   { server: 'CouchDB/1.6.1 (Erlang OTP/R16B03)',
+29 silly get     'content-type': 'application/json',
+29 silly get     etag: '"58cfe989-624"',
+29 silly get     'content-encoding': 'gzip',
+29 silly get     'cache-control': 'max-age=0',
+29 silly get     'transfer-encoding': 'chunked',
+29 silly get     'accept-ranges': 'bytes',
+29 silly get     date: 'Mon, 20 Mar 2017 14:42:13 GMT',
+29 silly get     via: '1.1 varnish',
+29 silly get     connection: 'keep-alive',
+29 silly get     'x-served-by': 'cache-hhn1537-HHN',
+29 silly get     'x-cache': 'MISS',
+29 silly get     'x-cache-hits': '0',
+29 silly get     'x-timer': 'S1490020932.924278,VS0,VE429',
+29 silly get     vary: 'Accept-Encoding' } ]
+30 verbose get saving euglena.organelle.db.mongodb to /home/codelovesme/.npm/registry.npmjs.org/euglena.organelle.db.mongodb_3Fwrite_3Dtrue/.cache.json
+31 verbose correctMkdir /home/codelovesme/.npm correctMkdir not in flight; initializing
+32 verbose unpublish removing attachments { shasum: '25c774a0784c85eae38574dab2fea697c745411d',
+32 verbose unpublish   tarball: 'https://registry.npmjs.org/euglena.organelle.db.mongodb/-/euglena.organelle.db.mongodb-0.0.1.tgz' }
+33 info unpublish No versions remain, removing entire package
+34 verbose request uri https://registry.npmjs.org/euglena.organelle.db.mongodb/-rev/1-24657edd9ac375742c726dd0bfd94e10
+35 verbose request sending authorization for write operation
+36 info attempt registry request try #1 at 5:42:12 PM
+37 verbose request using bearer token for auth
+38 http request DELETE https://registry.npmjs.org/euglena.organelle.db.mongodb/-rev/1-24657edd9ac375742c726dd0bfd94e10
+39 http 500 https://registry.npmjs.org/euglena.organelle.db.mongodb/-rev/1-24657edd9ac375742c726dd0bfd94e10
+40 verbose headers { 'content-type': 'application/json',
+40 verbose headers   'cache-control': 'max-age=0',
+40 verbose headers   'content-length': '17',
+40 verbose headers   'accept-ranges': 'bytes',
+40 verbose headers   date: 'Mon, 20 Mar 2017 14:42:15 GMT',
+40 verbose headers   via: '1.1 varnish',
+40 verbose headers   connection: 'keep-alive',
+40 verbose headers   'x-served-by': 'cache-hhn1537-HHN',
+40 verbose headers   'x-cache': 'MISS',
+40 verbose headers   'x-cache-hits': '0',
+40 verbose headers   'x-timer': 'S1490020933.480055,VS0,VE2331' }
+41 info retry will retry, error on last attempt: Error: Registry returned 500 for DELETE on https://registry.npmjs.org/euglena.organelle.db.mongodb/-rev/1-24657edd9ac375742c726dd0bfd94e10
+42 info attempt registry request try #2 at 5:42:25 PM
+43 verbose request using bearer token for auth
+44 http request DELETE https://registry.npmjs.org/euglena.organelle.db.mongodb/-rev/1-24657edd9ac375742c726dd0bfd94e10
+45 http 403 https://registry.npmjs.org/euglena.organelle.db.mongodb/-rev/1-24657edd9ac375742c726dd0bfd94e10
+46 verbose headers { 'content-type': 'application/json',
+46 verbose headers   'cache-control': 'max-age=300',
+46 verbose headers   'content-length': '122',
+46 verbose headers   'accept-ranges': 'bytes',
+46 verbose headers   date: 'Mon, 20 Mar 2017 14:42:26 GMT',
+46 verbose headers   via: '1.1 varnish',
+46 verbose headers   connection: 'keep-alive',
+46 verbose headers   'x-served-by': 'cache-hhn1537-HHN',
+46 verbose headers   'x-cache': 'MISS',
+46 verbose headers   'x-cache-hits': '0',
+46 verbose headers   'x-timer': 'S1490020945.922940,VS0,VE385',
+46 verbose headers   vary: 'Accept-Encoding' }
+47 verbose request invalidating /home/codelovesme/.npm/registry.npmjs.org/euglena.organelle.db.mongodb on DELETE
+48 verbose stack Error: you do not have permission to publish "euglena.organelle.db.mongodb". Are you logged in as the correct user? : euglena.organelle.db.mongodb
+48 verbose stack     at makeError (/home/codelovesme/.nvm/versions/node/v7.4.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+48 verbose stack     at CachingRegistryClient.<anonymous> (/home/codelovesme/.nvm/versions/node/v7.4.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+48 verbose stack     at Request._callback (/home/codelovesme/.nvm/versions/node/v7.4.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+48 verbose stack     at Request.self.callback (/home/codelovesme/.nvm/versions/node/v7.4.0/lib/node_modules/npm/node_modules/request/request.js:186:22)
+48 verbose stack     at emitTwo (events.js:106:13)
+48 verbose stack     at Request.emit (events.js:191:7)
+48 verbose stack     at Request.<anonymous> (/home/codelovesme/.nvm/versions/node/v7.4.0/lib/node_modules/npm/node_modules/request/request.js:1081:10)
+48 verbose stack     at emitOne (events.js:96:13)
+48 verbose stack     at Request.emit (events.js:188:7)
+48 verbose stack     at IncomingMessage.<anonymous> (/home/codelovesme/.nvm/versions/node/v7.4.0/lib/node_modules/npm/node_modules/request/request.js:1001:12)
+49 verbose statusCode 403
+50 verbose pkgid euglena.organelle.db.mongodb
+51 verbose cwd /home/codelovesme/git/me.codeloves/cessnalib/euglena.organelle.db.mongodb
+52 error Linux 4.4.0-66-generic
+53 error argv "/home/codelovesme/.nvm/versions/node/v7.4.0/bin/node" "/home/codelovesme/.nvm/versions/node/v7.4.0/bin/npm" "unpublish" "--force"
+54 error node v7.4.0
+55 error npm  v4.0.5
+56 error code E403
+57 error you do not have permission to publish "euglena.organelle.db.mongodb". Are you logged in as the correct user? : euglena.organelle.db.mongodb
+58 error If you need help, you may report this error at:
+58 error     <https://github.com/npm/npm/issues>
+59 verbose exit [ 1, true ]
