@@ -21,7 +21,7 @@ export class Organelle extends euglena_template.being.alive.organelle.DbOrganell
             this_.sapContent = particle.data;
             this_.getAlive();
         });
-        addAction(euglena_template.being.alive.constants.impacts.ReadParticle, (particle, callback) => {
+        addAction(euglena_template.being.alive.constants.particles.ReadParticle, (particle, callback) => {
             this_.db.collection("particles").find({ meta: particle.data.meta }).toArray((err, doc) => {
                 let p = doc && doc.length > 0 ? doc[0] : new euglena_template.being.alive.particle.Exception(
                     new euglena.sys.type.Exception("There is no particle for given reference."), "mongodb");
@@ -32,11 +32,9 @@ export class Organelle extends euglena_template.being.alive.organelle.DbOrganell
                 }
             });
         });
-        addAction(euglena_template.being.alive.constants.particles.ReadMatchedParticles, (particle, callback) => {
-            this_.db.collection("particles").find(euglena.js.Class.toDotNotation(particle.data)).toArray((err, doc) => {
-                let p = doc && doc.length > 0 ?
-                    new euglena_template.being.alive.particle.MatchedParticles({ particleRef: particle.data, result: doc }, this.sapContent.euglenaName) : new euglena_template.being.alive.particle.Exception(
-                        new euglena.sys.type.Exception("There is no particle for given reference."), "mongodb");
+        addAction(euglena_template.being.alive.constants.particles.ReadParticles, (particle, callback) => {
+            this_.db.collection("particles").find({ meta: particle.data.meta }).toArray((err, doc) => {
+                let p = new euglena_template.being.alive.particle.Particles(doc || [], this.sapContent.euglenaName);
                 if (callback) {
                     callback(p);
                 } else {
@@ -44,25 +42,12 @@ export class Organelle extends euglena_template.being.alive.organelle.DbOrganell
                 }
             });
         });
-        //TODO must be replaced with sift.js + euglena
-        addAction("ReadMatchedParticlesByPreBuild", (particle, callback) => {
-            this_.db.collection("particles").find(particle.data).toArray((err, doc) => {
-                let p = doc && doc.length > 0 ?
-                    new euglena_template.being.alive.particle.MatchedParticles({ particleRef: particle.data, result: doc }, this.sapContent.euglenaName) : new euglena_template.being.alive.particle.Exception(
-                        new euglena.sys.type.Exception("There is no particle for given reference."), "mongodb");
-                if (callback) {
-                    callback(p);
-                } else {
-                    this_.send(p, this_.name);
-                }
-            });
-        });
-        addAction(euglena_template.being.alive.constants.impacts.RemoveParticle, (particle) => {
+        addAction(euglena_template.being.alive.constants.particles.RemoveParticle, (particle) => {
             this_.db.collection("particles").findOneAndDelete({ meta: particle.data.meta }, (err, doc) => {
                 //TODO
             });
         });
-        addAction(euglena_template.being.alive.constants.impacts.SaveParticle, (particle) => {
+        addAction(euglena_template.being.alive.constants.particles.SaveParticle, (particle) => {
             this.db.collection("particles").findOneAndUpdate({ meta: particle.data.meta }, particle.data, { upsert: true }, (err, document) => {
                 if (err) {
                     //TODO
