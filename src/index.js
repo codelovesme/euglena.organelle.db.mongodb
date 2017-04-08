@@ -29,7 +29,7 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
             });
         });
         addAction(euglena_template_1.euglena_template.being.alive.constants.particles.ReadMatchedParticles, (particle, callback) => {
-            this_.db.collection("particles").find({ meta: Class.toDotNotation(particle.data.meta) }).toArray((err, doc) => {
+            this_.db.collection("particles").find(Class.toDotNotation({ meta: particle.data.meta })).toArray((err, doc) => {
                 let p = new euglena_template_1.euglena_template.being.alive.particle.Particles(doc || [], this.sapContent.euglenaName);
                 if (callback) {
                     callback(p);
@@ -45,7 +45,7 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
             });
         });
         addAction(euglena_template_1.euglena_template.being.alive.constants.particles.RemoveMatchedParticles, (particle) => {
-            this_.db.collection("particles").remove({ meta: Class.toDotNotation(particle.data.meta) }, (err, doc) => {
+            this_.db.collection("particles").remove(Class.toDotNotation({ meta: particle.data.meta }), (err, doc) => {
                 //TODO
             });
         });
@@ -60,7 +60,7 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
             });
         });
         addAction(euglena_template_1.euglena_template.being.alive.constants.particles.SaveMatchedParticle, (particle) => {
-            this.db.collection("particles").findOneAndUpdate({ meta: Class.toDotNotation(particle.data.meta) }, particle.data, { upsert: true }, (err, document) => {
+            this.db.collection("particles").findOneAndUpdate(Class.toDotNotation({ meta: particle.data.meta }), particle.data, { upsert: true }, (err, document) => {
                 if (err) {
                     //TODO
                 }
