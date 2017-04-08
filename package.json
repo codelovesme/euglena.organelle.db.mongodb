@@ -9,8 +9,8 @@
   "author": "codelovesme",
   "license": "GPL v2",
   "dependencies": {
-    "mongodb": "^2.1.16",
-    "euglena":"codelovesme/euglena#develop",
-    "euglena.template": "codelovesme/euglena.template"
+    "euglena": "codelovesme/euglena#develop",
+    "euglena.template": "codelovesme/euglena.template",
+    "mongodb": "^2.1.16"
   }
 }
