@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
   "author": "codelovesme",
   "license": "GPL v2",
@@ -12,5 +12,9 @@
     "euglena": "codelovesme/euglena#develop",
     "euglena.template": "codelovesme/euglena.template",
     "mongodb": "^2.1.16"
+  },
+  "devDependencies": {
+    "@types/chai": "^3.4.35",
+    "@types/mocha": "^2.2.40"
   }
 }

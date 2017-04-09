@@ -1,4 +1,3 @@
-/// <reference path="../typings/mongodb/mongodb.d.ts" />
 import { euglena_template } from "euglena.template";
 import { euglena } from "euglena";
 import Particle = euglena.being.Particle;
