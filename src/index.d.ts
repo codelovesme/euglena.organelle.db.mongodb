@@ -1,7 +1,7 @@
-import { euglena_template } from "euglena.template";
-import { euglena } from "euglena";
-import Particle = euglena.being.Particle;
-export declare class Organelle extends euglena_template.being.alive.organelle.DbOrganelle {
+import * as euglena_template from "@euglena/template";
+import * as euglena from "@euglena/core";
+import Particle = euglena.ParticleV1;
+export declare class Organelle extends euglena_template.alive.organelle.DbOrganelle {
     private db;
     private sapContent;
     constructor();
