@@ -23,7 +23,7 @@ export class Organelle extends euglena_template.alive.organelle.DbOrganelle {
             this_.getAlive();
         });
         addAction(euglena_template.alive.constants.particles.ReadParticle, (particle, callback) => {
-            this_.db.collection("particles").find({ meta: particle.data.meta }).toArray((err, doc) => {
+            this_.db.collection("particlnpes").find({ meta: particle.data.meta }).toArray((err, doc) => {
                 let p = doc && doc.length > 0 ? doc[0] : new euglena_template.alive.particle.Exception(
                     new sys.type.Exception("There is no particle for given reference."), "mongodb");
                 if (callback) {
