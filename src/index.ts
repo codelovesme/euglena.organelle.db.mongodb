@@ -1,5 +1,4 @@
 
-/// <reference path="../typings/mongodb/mongodb.d.ts" />
 "use strict";
 import * as mongodb from "mongodb";
 import { euglena_template } from "euglena.template";

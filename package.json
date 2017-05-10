@@ -9,13 +9,14 @@
   "author": "codelovesme",
   "license": "GPL v2",
   "dependencies": {
-    "euglena": "codelovesme/euglena#develop",
-    "euglena.template": "codelovesme/euglena.template",
-    "mongodb": "^2.1.16"
+    "euglena": "0.0.9",
+    "euglena.template": "0.0.7",
+    "mongodb": "^2.2.0"
   },
   "devDependencies": {
     "@types/chai": "^3.4.35",
     "@types/mocha": "^2.2.40",
+    "@types/mongodb": "^2.2.0",
     "chai": "^3.5.0"
   }
 }

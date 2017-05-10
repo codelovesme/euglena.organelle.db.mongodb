@@ -1,4 +1,3 @@
-/// <reference path="../typings/mongodb/mongodb.d.ts" />
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongodb = require("mongodb");
