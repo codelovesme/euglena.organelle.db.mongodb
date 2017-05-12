@@ -16,18 +16,7 @@ class Organelle extends euglena_template.alive.organelle.DbOrganelle {
             this_.sapContent = particle.data;
             this_.getAlive();
         });
-        addAction(euglena_template.alive.constants.particles.ReadParticle, (particle, callback) => {
-            this_.db.collection("particlnpes").find({ meta: particle.data.meta }).toArray((err, doc) => {
-                let p = doc && doc.length > 0 ? doc[0] : new euglena_template.alive.particle.Exception(new cessnalib_1.sys.type.Exception("There is no particle for given reference."), "mongodb");
-                if (callback) {
-                    callback(p);
-                }
-                else {
-                    this_.send(p, this_.name);
-                }
-            });
-        });
-        addAction(euglena_template.alive.constants.particles.ReadMatchedParticles, (particle, callback) => {
+        addAction(euglena_template.alive.constants.particles.ReadParticles, (particle, callback) => {
             this_.db.collection("particles").find(Class.toDotNotation({ meta: particle.data.meta })).toArray((err, doc) => {
                 let p = new euglena_template.alive.particle.Particles(doc || [], this.sapContent.euglenaName);
                 if (callback) {
@@ -38,7 +27,7 @@ class Organelle extends euglena_template.alive.organelle.DbOrganelle {
                 }
             });
         });
-        addAction(euglena_template.alive.constants.particles.ReadMatchedParticle, (particle, callback) => {
+        addAction(euglena_template.alive.constants.particles.ReadParticle, (particle, callback) => {
             this_.db.collection("particles").find(Class.toDotNotation({ meta: particle.data.meta })).toArray((err, doc) => {
                 let p = doc && doc.length > 0 ? doc[0] : new euglena_template.alive.particle.Exception(new cessnalib_1.sys.type.Exception("There is no particle for given reference."), "mongodb");
                 if (callback) {
@@ -54,7 +43,7 @@ class Organelle extends euglena_template.alive.organelle.DbOrganelle {
                 //TODO
             });
         });
-        addAction(euglena_template.alive.constants.particles.RemoveMatchedParticles, (particle) => {
+        addAction(euglena_template.alive.constants.particles.RemoveParticles, (particle) => {
             this_.db.collection("particles").remove(Class.toDotNotation({ meta: particle.data.meta }), (err, doc) => {
                 //TODO
             });
