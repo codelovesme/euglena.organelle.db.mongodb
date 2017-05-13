@@ -3,18 +3,17 @@
 import * as mongodb from "mongodb";
 import * as euglena_template from "@euglena/template";
 import * as euglena from "@euglena/core";
-import {sys,js} from "cessnalib";
+import { sys, js } from "cessnalib";
 import Particle = euglena.ParticleV1;
 import EuglenaInfo = euglena_template.alive.particle.EuglenaInfo;
 import Class = js.Class;
 
-const OrganelleName = "DbOrganelleImplMongoDb";
 let this_: Organelle = null;
 export class Organelle extends euglena_template.alive.organelle.DbOrganelle {
     private db: mongodb.Db;
     private sapContent: euglena_template.alive.particle.DbOrganelleSapContent;
     constructor() {
-        super(OrganelleName);
+        super(euglena_template.alive.constants.organelles.DbOrganelle);
         this_ = this;
     }
     protected bindActions(addAction: (particleName: string, action: (particle: Particle, callback: (particle: Particle) => void) => void) => void): void {

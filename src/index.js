@@ -4,11 +4,10 @@ const mongodb = require("mongodb");
 const euglena_template = require("@euglena/template");
 const cessnalib_1 = require("cessnalib");
 var Class = cessnalib_1.js.Class;
-const OrganelleName = "DbOrganelleImplMongoDb";
 let this_ = null;
 class Organelle extends euglena_template.alive.organelle.DbOrganelle {
     constructor() {
-        super(OrganelleName);
+        super(euglena_template.alive.constants.organelles.DbOrganelle);
         this_ = this;
     }
     bindActions(addAction) {
