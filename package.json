@@ -10,7 +10,7 @@
   "license": "GPL v2",
   "dependencies": {
     "@euglena/core": "^0.1.4",
-    "@euglena/template": "codelovesme/euglena.template#99cc1a0d17874a4c40cf5de21ed2daaa00d17709",
+    "@euglena/template": "codelovesme/euglena.template#ab9c11678ea4797689051fd2ec01e685a46a8dd8",
     "mongodb": "^2.2.0"
   },
   "devDependencies": {
