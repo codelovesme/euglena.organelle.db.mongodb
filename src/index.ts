@@ -13,7 +13,7 @@ export class Organelle extends euglena_template.alive.organelle.DbOrganelle {
     private db: mongodb.Db;
     private sapContent: euglena_template.alive.particle.DbOrganelleSapContent;
     constructor() {
-        super(euglena_template.alive.constants.organelles.DbOrganelle);
+        super();
         this_ = this;
     }
     protected bindActions(addAction: (particleName: string, action: (particle: Particle, callback: (particle: Particle) => void) => void) => void): void {

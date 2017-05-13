@@ -7,7 +7,7 @@ var Class = cessnalib_1.js.Class;
 let this_ = null;
 class Organelle extends euglena_template.alive.organelle.DbOrganelle {
     constructor() {
-        super(euglena_template.alive.constants.organelles.DbOrganelle);
+        super();
         this_ = this;
     }
     bindActions(addAction) {
