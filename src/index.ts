@@ -5,25 +5,27 @@ import * as euglena_template from "@euglena/template";
 import * as euglena from "@euglena/core";
 import { sys, js } from "cessnalib";
 import Particle = euglena.AnyParticle;
-import EuglenaInfo = euglena_template.alive.particle.EuglenaInfo;
 import Class = js.Class;
+import organelle = euglena_template.alive.organelle;
+import particles = euglena_template.alive.particle;
+import constants = euglena_template.alive.constants;
 
 let this_: Organelle = null;
-export class Organelle extends euglena_template.alive.organelle.DbOrganelle {
+export class Organelle extends organelle.DbOrganelle {
     private db: mongodb.Db;
-    private sapContent: euglena_template.alive.particle.DbOrganelleSapContent;
+    private sapContent: particles.DbOrganelleSapContent;
     constructor() {
         super();
         this_ = this;
     }
     protected bindActions(addAction: (particleName: string, action: (particle: Particle, callback: (particle: Particle) => void) => void) => void): void {
-        addAction(euglena_template.alive.constants.particles.DbOrganelleSap, (particle, callback) => {
+        addAction(constants.particles.DbOrganelleSap, (particle: particles.DbOrganelleSap, callback) => {
             this_.sapContent = particle.data;
             this_.getAlive();
         });
-        addAction(euglena_template.alive.constants.particles.ReadParticles, (particle, callback) => {
-            this_.db.collection("particles").find(Class.toDotNotation({ meta: particle.data.meta })).toArray((err, doc) => {
-                let p = new euglena_template.alive.particle.Particles(doc as Particle[] || [], this.sapContent.euglenaName);
+        addAction(constants.particles.ReadParticles, (particle: particles.ReadParticles, callback) => {
+            this_.db.collection("particles").find(Class.toDotNotation(particle.data)).toArray((err, doc) => {
+                let p = new particles.Particles(doc as Particle[] || [], this.sapContent.euglenaName);
                 if (callback) {
                     callback(p);
                 } else {
@@ -31,9 +33,9 @@ export class Organelle extends euglena_template.alive.organelle.DbOrganelle {
                 }
             });
         });
-        addAction(euglena_template.alive.constants.particles.ReadParticle, (particle, callback) => {
-            this_.db.collection("particles").find(Class.toDotNotation({ meta: particle.data.meta })).toArray((err, doc) => {
-                let p = doc && doc.length > 0 ? doc[0] : new euglena_template.alive.particle.Exception(
+        addAction(constants.particles.ReadParticle, (particle: particles.ReadParticle, callback) => {
+            this_.db.collection("particles").find(Class.toDotNotation(particle.data)).toArray((err, doc) => {
+                let p = doc && doc.length > 0 ? doc[0] : new particles.Exception(
                     new sys.type.Exception("There is no particle for given reference."), "mongodb");
                 if (callback) {
                     callback(p as Particle);
@@ -42,31 +44,22 @@ export class Organelle extends euglena_template.alive.organelle.DbOrganelle {
                 }
             });
         });
-        addAction(euglena_template.alive.constants.particles.RemoveParticle, (particle) => {
-            this_.db.collection("particles").findOneAndDelete({ meta: particle.data.meta }, (err, doc) => {
+        addAction(constants.particles.RemoveParticle, (particle: particles.RemoveParticle,callback) => {
+            this_.db.collection("particles").findOneAndDelete(particle.data, (err, doc) => {
                 //TODO
             });
         });
-        addAction(euglena_template.alive.constants.particles.RemoveParticles, (particle) => {
-            this_.db.collection("particles").remove(Class.toDotNotation({ meta: particle.data.meta }), (err, doc) => {
+        addAction(constants.particles.RemoveParticles, (particle: particles.RemoveParticles,callback) => {
+            this_.db.collection("particles").remove(Class.toDotNotation(particle.data), (err, doc) => {
                 //TODO
             });
         });
-        addAction(euglena_template.alive.constants.particles.SaveParticle, (particle) => {
-            this.db.collection("particles").findOneAndUpdate({ meta: particle.data.meta }, particle.data, { upsert: true }, (err, document) => {
+        addAction(constants.particles.SaveParticle, (particle: particles.SaveParticle,callback) => {
+            this.db.collection("particles").findOneAndUpdate(Class.toDotNotation(particle.data.query), particle.data.particle, { upsert: true }, (err, document) => {
                 if (err) {
                     //TODO
                 } else {
-                    // this2_.send(new euglena_template.alive.particles.Acknowledge({ of: saveParticle.of, id: saveParticle.content.name }, euglena_template.alive.constants.organelles.Db));
-                }
-            });
-        });
-        addAction(euglena_template.alive.constants.particles.SaveMatchedParticle, (particle) => {
-            this.db.collection("particles").findOneAndUpdate(Class.toDotNotation({ meta: particle.data.meta }), particle.data, { upsert: true }, (err, document) => {
-                if (err) {
-                    //TODO
-                } else {
-                    // this2_.send(new euglena_template.alive.particles.Acknowledge({ of: saveParticle.of, id: saveParticle.content.name }, euglena_template.alive.constants.organelles.Db));
+                    // this2_.send(new particles.Acknowledge({ of: saveParticle.of, id: saveParticle.content.name }, constants.organelles.Db));
                 }
             });
         });
@@ -75,7 +68,7 @@ export class Organelle extends euglena_template.alive.organelle.DbOrganelle {
         mongodb.MongoClient.connect("mongodb://" + this.sapContent.url + ":" + this.sapContent.port + "/" + this.sapContent.databaseName, (err, db) => {
             if (!err) {
                 this.db = db;
-                this_.send(new euglena_template.alive.particle.DbIsOnline("this"));
+                this_.send(new particles.DbIsOnline("this"));
             } else {
                 //TODO
             }

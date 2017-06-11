@@ -4,20 +4,23 @@ const mongodb = require("mongodb");
 const euglena_template = require("@euglena/template");
 const cessnalib_1 = require("cessnalib");
 var Class = cessnalib_1.js.Class;
+var organelle = euglena_template.alive.organelle;
+var particles = euglena_template.alive.particle;
+var constants = euglena_template.alive.constants;
 let this_ = null;
-class Organelle extends euglena_template.alive.organelle.DbOrganelle {
+class Organelle extends organelle.DbOrganelle {
     constructor() {
         super();
         this_ = this;
     }
     bindActions(addAction) {
-        addAction(euglena_template.alive.constants.particles.DbOrganelleSap, (particle, callback) => {
+        addAction(constants.particles.DbOrganelleSap, (particle, callback) => {
             this_.sapContent = particle.data;
             this_.getAlive();
         });
-        addAction(euglena_template.alive.constants.particles.ReadParticles, (particle, callback) => {
-            this_.db.collection("particles").find(Class.toDotNotation({ meta: particle.data.meta })).toArray((err, doc) => {
-                let p = new euglena_template.alive.particle.Particles(doc || [], this.sapContent.euglenaName);
+        addAction(constants.particles.ReadParticles, (particle, callback) => {
+            this_.db.collection("particles").find(Class.toDotNotation(particle.data)).toArray((err, doc) => {
+                let p = new particles.Particles(doc || [], this.sapContent.euglenaName);
                 if (callback) {
                     callback(p);
                 }
@@ -26,9 +29,9 @@ class Organelle extends euglena_template.alive.organelle.DbOrganelle {
                 }
             });
         });
-        addAction(euglena_template.alive.constants.particles.ReadParticle, (particle, callback) => {
-            this_.db.collection("particles").find(Class.toDotNotation({ meta: particle.data.meta })).toArray((err, doc) => {
-                let p = doc && doc.length > 0 ? doc[0] : new euglena_template.alive.particle.Exception(new cessnalib_1.sys.type.Exception("There is no particle for given reference."), "mongodb");
+        addAction(constants.particles.ReadParticle, (particle, callback) => {
+            this_.db.collection("particles").find(Class.toDotNotation(particle.data)).toArray((err, doc) => {
+                let p = doc && doc.length > 0 ? doc[0] : new particles.Exception(new cessnalib_1.sys.type.Exception("There is no particle for given reference."), "mongodb");
                 if (callback) {
                     callback(p);
                 }
@@ -37,33 +40,23 @@ class Organelle extends euglena_template.alive.organelle.DbOrganelle {
                 }
             });
         });
-        addAction(euglena_template.alive.constants.particles.RemoveParticle, (particle) => {
-            this_.db.collection("particles").findOneAndDelete({ meta: particle.data.meta }, (err, doc) => {
+        addAction(constants.particles.RemoveParticle, (particle, callback) => {
+            this_.db.collection("particles").findOneAndDelete(particle.data, (err, doc) => {
                 //TODO
             });
         });
-        addAction(euglena_template.alive.constants.particles.RemoveParticles, (particle) => {
-            this_.db.collection("particles").remove(Class.toDotNotation({ meta: particle.data.meta }), (err, doc) => {
+        addAction(constants.particles.RemoveParticles, (particle, callback) => {
+            this_.db.collection("particles").remove(Class.toDotNotation(particle.data), (err, doc) => {
                 //TODO
             });
         });
-        addAction(euglena_template.alive.constants.particles.SaveParticle, (particle) => {
-            this.db.collection("particles").findOneAndUpdate({ meta: particle.data.meta }, particle.data, { upsert: true }, (err, document) => {
+        addAction(constants.particles.SaveParticle, (particle, callback) => {
+            this.db.collection("particles").findOneAndUpdate(Class.toDotNotation(particle.data.query), particle.data.particle, { upsert: true }, (err, document) => {
                 if (err) {
                     //TODO
                 }
                 else {
-                    // this2_.send(new euglena_template.alive.particles.Acknowledge({ of: saveParticle.of, id: saveParticle.content.name }, euglena_template.alive.constants.organelles.Db));
-                }
-            });
-        });
-        addAction(euglena_template.alive.constants.particles.SaveMatchedParticle, (particle) => {
-            this.db.collection("particles").findOneAndUpdate(Class.toDotNotation({ meta: particle.data.meta }), particle.data, { upsert: true }, (err, document) => {
-                if (err) {
-                    //TODO
-                }
-                else {
-                    // this2_.send(new euglena_template.alive.particles.Acknowledge({ of: saveParticle.of, id: saveParticle.content.name }, euglena_template.alive.constants.organelles.Db));
+                    // this2_.send(new particles.Acknowledge({ of: saveParticle.of, id: saveParticle.content.name }, constants.organelles.Db));
                 }
             });
         });
@@ -72,7 +65,7 @@ class Organelle extends euglena_template.alive.organelle.DbOrganelle {
         mongodb.MongoClient.connect("mongodb://" + this.sapContent.url + ":" + this.sapContent.port + "/" + this.sapContent.databaseName, (err, db) => {
             if (!err) {
                 this.db = db;
-                this_.send(new euglena_template.alive.particle.DbIsOnline("this"));
+                this_.send(new particles.DbIsOnline("this"));
             }
             else {
                 //TODO
