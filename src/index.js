@@ -22,7 +22,7 @@ class Organelle extends euglena_template.alive.organelle.DbOrganelle {
                     callback(p);
                 }
                 else {
-                    this_.send(p, this_.name);
+                    this_.send(p);
                 }
             });
         });
@@ -33,7 +33,7 @@ class Organelle extends euglena_template.alive.organelle.DbOrganelle {
                     callback(p);
                 }
                 else {
-                    this_.send(p, this_.name);
+                    this_.send(p);
                 }
             });
         });
@@ -72,7 +72,7 @@ class Organelle extends euglena_template.alive.organelle.DbOrganelle {
         mongodb.MongoClient.connect("mongodb://" + this.sapContent.url + ":" + this.sapContent.port + "/" + this.sapContent.databaseName, (err, db) => {
             if (!err) {
                 this.db = db;
-                this_.send(new euglena_template.alive.particle.DbIsOnline("this"), this_.name);
+                this_.send(new euglena_template.alive.particle.DbIsOnline("this"));
             }
             else {
                 //TODO

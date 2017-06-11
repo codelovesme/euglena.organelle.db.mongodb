@@ -2,6 +2,31 @@
 # yarn lockfile v1
 
 
+"@euglena/core@github:codelovesme/euglena#a010e5d8e72aaba19bd1fdeca9c6d28b76e02473":
+  version "0.1.6"
+  resolved "https://codeload.github.com/codelovesme/euglena/tar.gz/a010e5d8e72aaba19bd1fdeca9c6d28b76e02473"
+  dependencies:
+    cessnalib "^0.1.2"
+
+"@euglena/core@github:codelovesme/euglena#bd33ffad252a630a4550ddabcb7a556a0ad7aeff":
+  version "0.1.6"
+  resolved "https://codeload.github.com/codelovesme/euglena/tar.gz/bd33ffad252a630a4550ddabcb7a556a0ad7aeff"
+  dependencies:
+    cessnalib "^0.1.2"
+
+"@euglena/template@github:codelovesme/euglena.template#4c921e268ae15fa5a693b798d9a709b4450ac688":
+  version "1.0.1"
+  resolved "https://codeload.github.com/codelovesme/euglena.template/tar.gz/4c921e268ae15fa5a693b798d9a709b4450ac688"
+  dependencies:
+    "@euglena/core" "github:codelovesme/euglena#a010e5d8e72aaba19bd1fdeca9c6d28b76e02473"
+    cessnalib "^0.2.0"
+
+"@types/bson@*":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@types/bson/-/bson-1.0.3.tgz#6c26f0876bf9d8cbb06edd4019e29354bf3a03e0"
+  dependencies:
+    "@types/node" "*"
+
 "@types/chai@^3.4.35":
   version "3.4.35"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-3.4.35.tgz#e8d65f83492d2944f816fc620741821c28a8c900"
@@ -9,6 +34,17 @@
 "@types/mocha@^2.2.40":
   version "2.2.40"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.40.tgz#9811dd800ece544cd84b5b859917bf584a150c4c"
+
+"@types/mongodb@^2.2.0":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-2.2.4.tgz#a563d08737ae1ea425cdf156deaf22c3955c38e5"
+  dependencies:
+    "@types/bson" "*"
+    "@types/node" "*"
+
+"@types/node@*":
+  version "7.0.29"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.29.tgz#ccfcec5b7135c7caf6c4ffb8c7f33102340d99df"
 
 assertion-error@^1.0.1:
   version "1.0.2"
@@ -18,9 +54,21 @@ bson@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/bson/-/bson-1.0.4.tgz#93c10d39eaa5b58415cbc4052f3e53e562b0b72c"
 
-buffer-shims@^1.0.0:
+buffer-shims@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/buffer-shims/-/buffer-shims-1.0.0.tgz#9978ce317388c649ad8793028c3477ef044a8b51"
+
+cessnalib@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/cessnalib/-/cessnalib-0.1.2.tgz#3fa7fb4d433d761795ce0cc9a33f5e38e51ea424"
+  dependencies:
+    sift "^3.3.5"
+
+cessnalib@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/cessnalib/-/cessnalib-0.2.0.tgz#e22ed7fd110ff3b578340048fe1ff10f27e563cb"
+  dependencies:
+    sift "^3.3.5"
 
 chai@^3.5.0:
   version "3.5.0"
@@ -44,19 +92,6 @@ es6-promise@3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-3.2.1.tgz#ec56233868032909207170c39448e24449dd1fc4"
 
-euglena.template@codelovesme/euglena.template:
-  version "0.0.5"
-  resolved "https://codeload.github.com/codelovesme/euglena.template/tar.gz/74b2db3c6d325b2da390d44cc0c5e8ee277eb84a"
-  dependencies:
-    chai "^3.5.0"
-    euglena codelovesme/euglena#develop
-
-euglena@codelovesme/euglena#develop:
-  version "0.0.8"
-  resolved "https://codeload.github.com/codelovesme/euglena/tar.gz/2b28c1f0cb5df34ec5c12d9f4c290ad642356c79"
-  dependencies:
-    sift "^3.2.7"
-
 inherits@~2.0.1:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
@@ -65,35 +100,35 @@ isarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
 
-mongodb-core@2.1.9:
-  version "2.1.9"
-  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-2.1.9.tgz#85aa71ee4fb716196e06b787557bf139f801daf5"
+mongodb-core@2.1.12:
+  version "2.1.12"
+  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-2.1.12.tgz#1531192511bc16ef160ac6ae0cc46776ffd8451d"
   dependencies:
     bson "~1.0.4"
     require_optional "~1.0.0"
 
-mongodb@^2.1.16:
-  version "2.2.25"
-  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-2.2.25.tgz#d3b25dad00eda2bdfcbc996210ba082ac686a6b6"
+mongodb@^2.2.0:
+  version "2.2.28"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-2.2.28.tgz#d8ff45754366e03973fa259bf4f11447858da657"
   dependencies:
     es6-promise "3.2.1"
-    mongodb-core "2.1.9"
-    readable-stream "2.1.5"
+    mongodb-core "2.1.12"
+    readable-stream "2.2.7"
 
 process-nextick-args@~1.0.6:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-1.0.7.tgz#150e20b756590ad3f91093f25a4f2ad8bff30ba3"
 
-readable-stream@2.1.5:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.1.5.tgz#66fa8b720e1438b364681f2ad1a63c618448c9d0"
+readable-stream@2.2.7:
+  version "2.2.7"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.2.7.tgz#07057acbe2467b22042d36f98c5ad507054e95b1"
   dependencies:
-    buffer-shims "^1.0.0"
+    buffer-shims "~1.0.0"
     core-util-is "~1.0.0"
     inherits "~2.0.1"
     isarray "~1.0.0"
     process-nextick-args "~1.0.6"
-    string_decoder "~0.10.x"
+    string_decoder "~1.0.0"
     util-deprecate "~1.0.1"
 
 require_optional@~1.0.0:
@@ -107,17 +142,23 @@ resolve-from@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-2.0.0.tgz#9480ab20e94ffa1d9e80a804c7ea147611966b57"
 
+safe-buffer@~5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.0.1.tgz#d263ca54696cd8a306b5ca6551e92de57918fbe7"
+
 semver@^5.1.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
 
-sift@^3.2.7:
-  version "3.2.7"
-  resolved "https://registry.yarnpkg.com/sift/-/sift-3.2.7.tgz#27246bb6320825d880bc3a182c17f2734946e91d"
+sift@^3.3.5:
+  version "3.3.10"
+  resolved "https://registry.yarnpkg.com/sift/-/sift-3.3.10.tgz#9512dd45a016837df0c3e67d1c32ab2329df00cc"
 
-string_decoder@~0.10.x:
-  version "0.10.31"
-  resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
+string_decoder@~1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-1.0.2.tgz#b29e1f4e1125fa97a10382b8a533737b7491e179"
+  dependencies:
+    safe-buffer "~5.0.1"
 
 type-detect@0.1.1:
   version "0.1.1"
