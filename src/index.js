@@ -51,14 +51,21 @@ class Organelle extends organelle.DbOrganelle {
             });
         });
         addAction(constants.particles.SaveParticle, (particle, callback) => {
-            this.db.collection("particles").findOneAndUpdate(Class.toDotNotation(particle.data.query), particle.data.particle, { upsert: true }, (err, document) => {
-                if (err) {
+            if (particle.data.query) {
+                this.db.collection("particles").findOneAndUpdate(Class.toDotNotation(particle.data.query), particle.data.particle, { upsert: true }, (err, document) => {
+                    if (err) {
+                        //TODO
+                    }
+                    else {
+                        // this2_.send(new particles.Acknowledge({ of: saveParticle.of, id: saveParticle.content.name }, constants.organelles.Db));
+                    }
+                });
+            }
+            else {
+                this.db.collection("particles").insertOne(particle, () => {
                     //TODO
-                }
-                else {
-                    // this2_.send(new particles.Acknowledge({ of: saveParticle.of, id: saveParticle.content.name }, constants.organelles.Db));
-                }
-            });
+                });
+            }
         });
     }
     getAlive() {
