@@ -35,8 +35,7 @@ export class Organelle extends organelle.DbOrganelle {
         });
         addAction(constants.particles.ReadParticle, (particle: particles.ReadParticle, callback) => {
             this_.db.collection("particles").find(Class.toDotNotation(particle.data)).toArray((err, doc) => {
-                let p = doc && doc.length > 0 ? doc[0] : new particles.Exception(
-                    new sys.type.Exception("There is no particle for given reference."), "mongodb");
+                let p = doc && doc.length > 0 ? doc[0] : null;
                 if (callback) {
                     callback(p as Particle);
                 } else {
