@@ -2,7 +2,7 @@
   "name": "@euglena/organelle.db.mongodb",
   "version": "0.2.0",
   "description": "",
-  "main": ".dist/index.js",
+  "main": ".dist/src/index.js",
   "scripts": {
     "test": "gulp test",
     "build": "gulp build",
@@ -12,7 +12,7 @@
     "name": "Fedai Kaya",
     "email": "codelovesme@gmail.com"
   },
-  "typings": ".dist/index.d.ts",
+  "typings": ".dist/src/index.d.ts",
   "license": "GPL v2",
   "dependencies": {
     "@euglena/core": "github:codelovesme/euglena#bd33ffad252a630a4550ddabcb7a556a0ad7aeff",
