@@ -41,7 +41,7 @@ class Organelle extends organelle.DbOrganelle {
             });
         });
         addAction(constants.particles.RemoveParticle, (particle, callback) => {
-            this_.db.collection("particles").findOneAndDelete(particle.data, (err, doc) => {
+            this_.db.collection("particles").findOneAndDelete(Class.toDotNotation(particle.data), (err, doc) => {
                 //TODO
             });
         });
