@@ -2,11 +2,17 @@
   "name": "@euglena/organelle.db.mongodb",
   "version": "0.1.2",
   "description": "",
-  "main": "src/index.js",
+  "main": ".dist/index.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "gulp test",
+    "build": "gulp build",
+    "start": "gulp watch"
   },
-  "author": "codelovesme",
+  "author": {
+    "name": "Fedai Kaya",
+    "email": "codelovesme@gmail.com"
+  },
+  "typings": ".dist/index.d.ts",
   "license": "GPL v2",
   "dependencies": {
     "@euglena/core": "github:codelovesme/euglena#bd33ffad252a630a4550ddabcb7a556a0ad7aeff",
@@ -14,9 +20,15 @@
     "mongodb": "^2.2.0"
   },
   "devDependencies": {
+    "gulp": "^3.9.1",
     "@types/chai": "^3.4.35",
     "@types/mocha": "^2.2.40",
     "@types/mongodb": "^2.2.0",
-    "chai": "^3.5.0"
+    "chai": "^3.5.0",
+    "gulp-mocha": "^4.3.1",
+    "gulp-typescript": "^3.2.2",
+    "merge2": "^1.2.0",
+    "mocha": "^3.4.2",
+    "typescript": "^2.5.2"
   }
 }

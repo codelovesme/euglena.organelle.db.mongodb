@@ -81,4 +81,5 @@ class Organelle extends organelle.DbOrganelle {
     }
 }
 exports.Organelle = Organelle;
+
 //# sourceMappingURL=index.js.map

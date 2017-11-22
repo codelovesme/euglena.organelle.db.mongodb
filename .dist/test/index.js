@@ -10,4 +10,5 @@ describe("euglena.organelle.db.mongodb", () => {
         chai.expect(target).to.be.true;
     });
 });
+
 //# sourceMappingURL=index.js.map
