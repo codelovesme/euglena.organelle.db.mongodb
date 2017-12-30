@@ -8,6 +8,7 @@
     "build": "gulp build",
     "start": "gulp watch"
   },
+  "files":[".dist/src/*"],
   "author": {
     "name": "Fedai Kaya",
     "email": "codelovesme@gmail.com"
