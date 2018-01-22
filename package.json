@@ -20,6 +20,7 @@
   "dependencies": {
     "@euglena/core": "^0.1.7",
     "@euglena/template": "^2.0.0",
+    "cessnalib": "^0.7.0",
     "mongodb": "^2.2.0"
   },
   "devDependencies": {
