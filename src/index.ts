@@ -64,7 +64,7 @@ export class Organelle extends organelle.DbOrganelle {
                     }
                 });
             } else {
-                this.db.collection("particles").insertOne(particle.data,()=>{
+                this.db.collection("particles").insertOne(particle.data.particle,()=>{
                     //TODO
                 });
             }
