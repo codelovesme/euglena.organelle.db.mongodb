@@ -1,6 +1,6 @@
 {
   "name": "@euglena/organelle.db.mongodb",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "",
   "main": ".dist/src/index.js",
   "scripts": {
@@ -8,6 +8,9 @@
     "build": "gulp build",
     "start": "gulp watch"
   },
+  "files": [
+    ".dist/src/*"
+  ],
   "author": {
     "name": "Fedai Kaya",
     "email": "codelovesme@gmail.com"
